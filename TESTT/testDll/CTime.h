@@ -1,0 +1,30 @@
+#pragma once
+#include <iostream>
+#include "testDll.h"
+
+class TESTDLL_API Time
+{
+public:
+    Time(); // konstruktor domyslny
+    Time( int nHour, int nMinute, int nSecond );
+    Time( const Time& t );
+    Time& operator=( const Time& t ); // operator przypisania
+
+public:
+    int getHour() const;
+    int getMinute() const;
+    int getSecond() const;
+
+    int setHour( int nHour );
+    int setMinute( int nMinute );
+    int setSecond( int nSecond );
+    int setTime( int nHour, int nMinute, int nSecond );
+
+    friend TESTDLL_API std::istream& operator>>( std::istream& in, Time& t );
+    friend TESTDLL_API std::ostream& operator<<( std::ostream& out, const Time& t );
+
+private:
+    int m_nHour;
+    int m_nMinute;
+    int m_nSecond;
+};
